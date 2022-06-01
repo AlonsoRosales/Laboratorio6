@@ -82,7 +82,7 @@ public class PreguntasController {
 
     @PostMapping("/Pregunta2a/calcular")
     public String p2aCalcular(@RequestParam("id") String idEmpleado){
-        return "redirect:/Pregunta2a?id="+idEmpleado;
+        return "redirect:/Lab6/Pregunta2a?id="+idEmpleado;
     }
 
     @GetMapping("/Pregunta2b/list")

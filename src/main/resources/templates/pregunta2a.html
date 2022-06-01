@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-    <head th:replace="fragments/navbar.html :: header('Impuestos')"></head>
+    <head th:replace="fragments/navbar.html :: header( title = 'Pregunta 1')"></head>
     <body>
+        <div class="container">
+            <nav th:replace="fragments/navbar.html :: navbar( active = 'Pregunta 1')"></nav>
 
         <div class="container">
 
@@ -13,7 +15,7 @@
             <br>
 
             <div class="row">
-                <form method="post" th:action="@{/Pregunta2a/calcular}">
+                <form method="post" th:action="@{/Lab6/Pregunta2a/calcular}">
                     <h3>Seleccione un Empleado para Empezar</h3>
                     <label for="empleado">Empleado</label>
                     <select id="empleado" class="form-select" name="id">
@@ -24,7 +26,7 @@
                         </option>
                     </select>
 
-                    <button class="" type="submit">Calcular</button>
+                    <button class="btn btn-primary" type="submit">Calcular</button>
                 </form>
             </div>
 
