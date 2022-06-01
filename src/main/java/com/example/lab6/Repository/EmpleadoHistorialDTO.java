@@ -1,4 +1,4 @@
-package com.example.lab6.Entity;
+package com.example.lab6.Repository;
 
 import java.math.BigDecimal;
 
