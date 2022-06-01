@@ -6,15 +6,14 @@ import com.example.lab6.Repository.JobReporsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Controller
+@RequestMapping("/Lab6")
 public class PreguntasController {
 
     @Autowired
@@ -22,8 +21,15 @@ public class PreguntasController {
     @Autowired
     JobReporsitory jobReporsitory;
 
+    @GetMapping("/Pregunta1")
+    public String pregunta1(Model model) {
+        List<Employee> employeeList = employeeReporsitory.findAll();
+        model.addAttribute("list","listaEmpleados");
+        return "pregunta1";
+    }
+
     @GetMapping("/Pregunta1a")
-    public String preguntita1a(){
+    public String preguntita1a(Model model){
         return "pregunta1a";
     }
 
