@@ -8,16 +8,20 @@
     <hr/>
     <form th:action="@{'/Pregunta2b/save'}" method="post">
         <div class="form-group">
-            <label for="firstname">Nombre</label>
-            <input type="text" class="form-control" name="firstname" id="firstname"/>
+            <label for="firstName">Nombre</label>
+            <input type="text" class="form-control" name="firstName" id="firstName"/>
         </div>
         <div class="form-group">
-            <label for="lastname">Apellido</label>
-            <input type="text" class="form-control" name="lastname" id="lastname"/>
+            <label for="lastName">Apellido</label>
+            <input type="text" class="form-control" name="lastName" id="lastName"/>
         </div>
         <div class="form-group">
-            <label for="hiredate">Fecha de ingreso</label>
-            <input type="text" class="form-control" name="hireDate" placeholder="dd-MM-yyyy" id="hiredate"/>
+            <label for="salarystr">Salary</label>
+            <input type="text" class="form-control" name="salarystr" id="salarystr"/>
+        </div>
+        <div class="form-group">
+            <label for="hireDate">Fecha de ingreso</label>
+            <input type="text" class="form-control" name="hireDate" placeholder="yyyy-mm-dd 00:00:00" id="hireDate"/>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
@@ -28,8 +32,16 @@
             <input type="text" class="form-control" name="password" id="password"/>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" name="password" id="password"/>
+            <label for="department">Departamento</label>
+            <select class="form-control" name="department" id="department">
+                <option th:each="department : ${listaDepartamentos}" th:text="${department.departmentName}" th:value="${department.id}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="job">Job</label>
+            <select class="form-control" name="job" id="job">
+                <option th:each="job : ${listaTrabajos}" th:text="${job.jobTitle}" th:value="${job.id}"></option>
+            </select>
         </div>
         <a th:href="@{'/Pregunta2b/list'}" class="btn btn-danger">Cancelar</a>
         <button type="submit" class="btn btn-primary">Registrar</button>

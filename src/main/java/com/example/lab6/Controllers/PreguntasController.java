@@ -1,16 +1,15 @@
 package com.example.lab6.Controllers;
 
 import com.example.lab6.Entity.Employee;
+import com.example.lab6.Repository.DepartmentRepository;
 import com.example.lab6.Repository.EmployeeReporsitory;
 import com.example.lab6.Repository.JobReporsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -21,6 +20,8 @@ public class PreguntasController {
     EmployeeReporsitory employeeReporsitory;
     @Autowired
     JobReporsitory jobReporsitory;
+    @Autowired
+    DepartmentRepository departmentRepository;
 
     @GetMapping("/Pregunta1")
     public String pregunta1(Model model) {
@@ -57,10 +58,13 @@ public class PreguntasController {
     @GetMapping("/Pregunta2b/new")
     public String crearNuevoEmpleado(Model model){
         model.addAttribute("listaTrabajos",jobReporsitory.findAll());
+        model.addAttribute("listaDepartamentos",departmentRepository.findAll());
         return "pregunta2b/newForm";
     }
     @PostMapping("/Pregunta2b/save")
-    public String guardarEmpleado(Employee employee){
+    public String guardarEmpleado(Employee employee, @RequestParam("salarystr") String salarystr){
+        BigDecimal salary = new BigDecimal(salarystr);
+        employee.setSalary(salary);
         employeeReporsitory.save(employee);
         return "redirect:/pregunta2b/list";
     }
