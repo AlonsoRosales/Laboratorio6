@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-
-    </body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/navbar.html :: header( title = 'Pregunta 1')"></head>
+<body>
+<div class="container">
+    <nav th:replace="fragments/navbar.html :: navbar( active = 'Pregunta 1')"></nav>
+    <h2>Lista de empleados-Pregunta 1</h2>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/Lab6/Pregunta1b}">Pregunta 1b</a>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    <form method="get" th:action="@{/Lab6/Pregunta1a}">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-12">
+                <div class="input-group d-flex justify-content-center">
+                    <input type="text" placeholder="Ingresar monto" name="monto">
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="d-flex justify-content-center">
+                    <button type="submit">
+                        <a>Buscar</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Fecha de inicio</th>
+            <th>Salario</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee, info : ${listaEmpleados}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${employee.firstName} + ' ' +${employee.lastName}"></td>
+            <td th:text="${employee.hireDate}"></td>
+            <td th:text="${employee.salary}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
 </html>

@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public interface EmployeeReporsitory extends JpaRepository<Employee, Integer> {
-    @Query(nativeQuery = true,value = "call buscar_empleadosxmasanios(?1)")
+    @Query(nativeQuery = true,value = "call buscar_empleadosxsalario(?1)")
     List<Employee> buscarEmpleadoPorMayorSalario(int salario);
     @Query(nativeQuery = true,value = "call buscar_empleadosxmasanios()")
     List<EmpleadoHistorialDTO> buscarEmpleadorPorAnios();
