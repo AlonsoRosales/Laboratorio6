@@ -6,39 +6,39 @@
     <nav th:replace="fragments/navbar.html :: navbar( active = 'Employee')"></nav>
     <h2>Nuevo Empleado</h2>
     <hr/>
-    <form th:action="@{'/Lab6/Pregunta2b/save'}" method="post">
+    <form th:action="@{'/Lab6/Pregunta2b/save'}" method="post" th:object="${employee}">
         <div class="form-group">
-            <label for="firstName">Nombre</label>
-            <input type="text" class="form-control" name="firstName" id="firstName"/>
+            <label>Nombre</label>
+            <input type="text" class="form-control" th:field="*{firstName}"/>
         </div>
         <div class="form-group">
-            <label for="lastName">Apellido</label>
-            <input type="text" class="form-control" name="lastName" id="lastName"/>
+            <label>Apellido</label>
+            <input type="text" class="form-control" th:field="*{lastName}"/>
         </div>
         <div class="form-group">
-            <label for="salarystr">Salary</label>
-            <input type="text" class="form-control" name="salarystr" id="salarystr"/>
+            <label>Salario</label>
+            <input type="text" class="form-control" th:field="*{salary}"/> <!--salarystr-->
         </div>
         <div class="form-group">
-            <label for="hireDate">Fecha de ingreso</label>
-            <input type="text" class="form-control" name="hireDate" placeholder="yyyy-mm-dd 00:00:00" id="hireDate"/>
+            <label>Fecha de ingreso</label>
+            <input type="datetime-local" class="form-control" placeholder="yyyy-mm-dd 00:00:00" th:field="*{hireDate}"/>
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" id="email"/>
+            <label>Correo</label>
+            <input type="text" class="form-control" th:field="*{email}"/>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="text" class="form-control" name="password" id="password"/>
+            <label>Contraseña</label>
+            <input type="password" class="form-control" th:field="*{password}"/>
         </div>
         <div class="form-group">
-            <label for="department">Departamento</label>
+            <label>Departamento</label>
             <select class="form-control" name="department" id="department">
                 <option th:each="department : ${listaDepartamentos}" th:text="${department.departmentName}" th:value="${department.id}"></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="job">Job</label>
+            <label>Job</label>
             <select class="form-control" name="job" id="job">
                 <option th:each="job : ${listaTrabajos}" th:text="${job.jobTitle}" th:value="${job.id}"></option>
             </select>

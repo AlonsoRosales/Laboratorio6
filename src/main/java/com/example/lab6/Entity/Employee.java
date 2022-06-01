@@ -30,7 +30,7 @@ public class Employee {
     @Column(name = "hire_date", nullable = false)
     private String hireDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "job_id", nullable = false)
     private Job job;
 
@@ -40,11 +40,11 @@ public class Employee {
     @Column(name = "commission_pct", precision = 2, scale = 2)
     private BigDecimal commissionPct;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 

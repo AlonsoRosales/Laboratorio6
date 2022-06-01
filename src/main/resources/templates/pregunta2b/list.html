@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/navbar.html :: header( title = 'Empleados')"></head>
+<head th:replace="fragments/navbar.html :: header( title = 'Pregunta 2b')"></head>
 <body>
 <div class="container">
-    <nav th:replace="fragments/navbar.html :: navbar( active = 'Employee')"></nav>
+    <nav th:replace="fragments/navbar.html :: navbar( active = 'Pregunta2b')"></nav>
     <h2>Lista de empleados TI</h2>
     <a class="btn btn-primary mt-4 mb-4" th:href="@{'/Lab6/Pregunta2b/new'}">Nuevo Empleado</a>
     <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>

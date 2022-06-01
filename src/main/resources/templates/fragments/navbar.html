@@ -6,6 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <title th:text="${title}"></title>
 </head>
 <body>
@@ -16,16 +17,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Laboratorio 6-Grupo3</a>
+            <a class="navbar-brand" th:href="@{/Lab6}">Laboratorio 6-Grupo3</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item" th:classappend="${active == 'Employee'?'active':''}">
-                    <a class="nav-link" th:href="@{/Lab6/Pregunta1}">Pregunta 1</a>
+                <li class="nav-item" th:classappend="${active == 'Pregunta1a'?'active':''}">
+                    <a class="nav-link" th:href="@{/Lab6/Pregunta1a}">Pregunta 1a</a>
                 </li>
-                <li class="nav-item" th:classappend="${active == 'Shipper'?'active':''}">
+                <li class="nav-item" th:classappend="${active == 'Pregunta1b'?'active':''}">
+                    <a class="nav-link" th:href="@{/Lab6/Pregunta1b}">Pregunta 1b</a>
+                </li>
+                <li class="nav-item" th:classappend="${active == 'Pregunta2a'?'active':''}">
                     <a class="nav-link"  th:href="@{/Lab6/Pregunta2a}">Pregunta 2a</a>
                 </li>
-                <li class="nav-item" th:classappend="${active == 'Shipper'?'active':''}">
-                    <a class="nav-link"  th:href="@{/Lab6/Pregunta2a}">Pregunta 2a</a>
+                <li class="nav-item" th:classappend="${active == 'Pregunta2b'?'active':''}">
+                    <a class="nav-link"  th:href="@{/Lab6/Pregunta2b/list}">Pregunta 2b</a>
                 </li>
             </ul>
         </div>

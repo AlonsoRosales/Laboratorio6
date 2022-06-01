@@ -39,6 +39,7 @@ public class PreguntasController {
 
     @GetMapping("/Pregunta1a")
     public String preguntita1a(Model model, @RequestParam(value = "monto",defaultValue = "0") String monto){
+        model.addAttribute("monto", monto);
         try{
             Integer monto_value = Integer.parseInt(monto);
             List<Employee> employeeList = employeeReporsitory.buscarEmpleadoPorMayorSalario(monto_value);
@@ -51,6 +52,8 @@ public class PreguntasController {
         }
         return "pregunta1a";
     }
+
+
 
     @GetMapping("/Pregunta1b")
     public String preguntita1b(Model model){
@@ -91,15 +94,14 @@ public class PreguntasController {
         return "pregunta2b/list";
     }
     @GetMapping("/Pregunta2b/new")
-    public String crearNuevoEmpleado(Model model){
+    public String crearNuevoEmpleado(@ModelAttribute("employee") Employee employee, Model model){
         model.addAttribute("listaTrabajos",jobReporsitory.findAll());
         model.addAttribute("listaDepartamentos",departmentRepository.findAll());
         return "pregunta2b/newForm";
     }
+    //@RequestParam("salarystr") String salarystr
     @PostMapping("/Pregunta2b/save")
-    public String guardarEmpleado(Employee employee, @RequestParam("salarystr") String salarystr){
-        BigDecimal salary = new BigDecimal(salarystr);
-        employee.setSalary(salary);
+    public String guardarEmpleado(@ModelAttribute("employee") Employee employee){
         employeeReporsitory.save(employee);
         return "redirect:/Lab6/Pregunta2b/list";
     }
