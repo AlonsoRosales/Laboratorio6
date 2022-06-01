@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head th:replace="fragments/navbar.html :: header('Impuestos')"></head>
     <body>
+
+        <div class="container">
+
+            <h2>Cálculo de Impuestos</h2>
+            <h3>Impuesto de Quinta Categoría</h3>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <form method="post" th:action="@{/Pregunta2a/calcular}">
+                    <h3>Seleccione un Empleado para Empezar</h3>
+                    <label for="empleado">Empleado</label>
+                    <select id="empleado" class="form-select" name="id">
+                        <option th:each="empleado : ${listaEmpleados}"
+                                th:text="${empleado.firstName + ' ' + empleado.lastName}"
+                                th:value="${empleado.id}"
+                                th:selected="${empleadoSelect != null && empleado.id == empleadoSelect.id}">
+                        </option>
+                    </select>
+
+                    <button class="" type="submit">Calcular</button>
+                </form>
+            </div>
+
+            <br>
+            <br>
+
+            <div th:if="${impuestos != null}">
+                <h4 th:text="|Impuestos Totales de
+                ${empleadoSelect.firstName + ' ' + empleadoSelect.lastName}:|">
+                </h4>
+
+                <br>
+
+                <h4><b th:text="|S/${impuestos}|"></b></h4>
+            </div>
+        </div>
 
     </body>
 </html>
