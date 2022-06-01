@@ -28,7 +28,7 @@ public class Employee {
     private String phoneNumber;
 
     @Column(name = "hire_date", nullable = false)
-    private Instant hireDate;
+    private String hireDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "job_id", nullable = false)
@@ -99,11 +99,11 @@ public class Employee {
         this.job = job;
     }
 
-    public Instant getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Instant hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 
