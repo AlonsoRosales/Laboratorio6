@@ -66,7 +66,7 @@ public class PreguntasController {
         BigDecimal salary = new BigDecimal(salarystr);
         employee.setSalary(salary);
         employeeReporsitory.save(employee);
-        return "redirect:/pregunta2b/list";
+        return "redirect:/Lab6/Pregunta2b/list";
     }
 
 

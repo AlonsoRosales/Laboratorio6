@@ -5,7 +5,7 @@
 <div class="container">
     <nav th:replace="fragments/navbar.html :: navbar( active = 'Employee')"></nav>
     <h2>Lista de empleados TI</h2>
-    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/new'}">Nuevo Empleado</a>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{'/Lab6/Pregunta2b/new'}">Nuevo Empleado</a>
     <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
     <table class="table">
         <thead>

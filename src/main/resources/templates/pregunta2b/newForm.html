@@ -6,7 +6,7 @@
     <nav th:replace="fragments/navbar.html :: navbar( active = 'Employee')"></nav>
     <h2>Nuevo Empleado</h2>
     <hr/>
-    <form th:action="@{'/Pregunta2b/save'}" method="post">
+    <form th:action="@{'/Lab6/Pregunta2b/save'}" method="post">
         <div class="form-group">
             <label for="firstName">Nombre</label>
             <input type="text" class="form-control" name="firstName" id="firstName"/>
@@ -43,7 +43,7 @@
                 <option th:each="job : ${listaTrabajos}" th:text="${job.jobTitle}" th:value="${job.id}"></option>
             </select>
         </div>
-        <a th:href="@{'/Pregunta2b/list'}" class="btn btn-danger">Cancelar</a>
+        <a th:href="@{'/Lab6/Pregunta2b/list'}" class="btn btn-danger">Cancelar</a>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </div>
