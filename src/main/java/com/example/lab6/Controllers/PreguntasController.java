@@ -23,7 +23,10 @@ public class PreguntasController {
         return "pregunta2a";
     }
 
-
+    @GetMapping("/Pregunta2b")
+    public String preguntita2b(){
+        return "pregunta2b";
+    }
 
 
 }
