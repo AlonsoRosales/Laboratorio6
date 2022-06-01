@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/Lab6")
+@RequestMapping("/")
 public class PreguntasController {
 
     @Autowired
@@ -46,8 +47,29 @@ public class PreguntasController {
     }
 
     @GetMapping("/Pregunta2a")
-    public String preguntita2a(){
+    public String preguntita2a(@RequestParam(value = "id", defaultValue = "0") String strId,
+                               Model model){
+        try{
+            int idEmpleado = Integer.parseInt(strId);
+
+            Optional<Employee> empleadoSelect = employeeReporsitory.findById(idEmpleado);
+
+            if(empleadoSelect.isPresent()){
+                Integer impuestos = employeeReporsitory.hallarImpuestos(idEmpleado);
+                model.addAttribute("empleadoSelect",empleadoSelect.get());
+                model.addAttribute("impuestos",impuestos);
+            }
+        } catch (NumberFormatException e){
+            System.out.println("La id recibida es: " + strId);
+        }
+
+        model.addAttribute("listaEmpleados",employeeReporsitory.findAll());
         return "pregunta2a";
+    }
+
+    @PostMapping("/Pregunta2a/calcular")
+    public String p2aCalcular(@RequestParam("id") String idEmpleado){
+        return "redirect:/Pregunta2a?id="+idEmpleado;
     }
 
     @GetMapping("/Pregunta2b/list")
