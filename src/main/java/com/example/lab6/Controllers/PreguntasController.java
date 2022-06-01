@@ -1,5 +1,6 @@
 package com.example.lab6.Controllers;
 
+import com.example.lab6.Entity.Employee;
 import com.example.lab6.Repository.EmployeeReporsitory;
 import com.example.lab6.Repository.JobReporsitory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/Lab6")
@@ -22,6 +27,11 @@ public class PreguntasController {
         List<Employee> employeeList = employeeReporsitory.findAll();
         model.addAttribute("list","listaEmpleados");
         return "pregunta1";
+    }
+
+    @GetMapping("")
+    public String home(){
+        return "casita";
     }
 
     @GetMapping("/Pregunta1a")
